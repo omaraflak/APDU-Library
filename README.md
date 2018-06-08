@@ -68,4 +68,4 @@ That said, `NfcManager` already implement the `select` command, you just need to
 manager.selectApplication(appId, apdu);
 ```
 
-You can find an example code here : **[main.cpp]()**
+You can find an example code here : **[main.cpp](https://github.com/OmarAflak/PN532-Android-HCE/blob/master/src/main.cpp)**
