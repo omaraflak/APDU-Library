@@ -1,6 +1,10 @@
 # PN532 & Android HCE
 
-This is a C++ code to make an easy communication between PN532 chip and Android HCE.
+As part of a school project, I had to make an NFC connection between my Android and the PN532 V3 chip.
+
+I thought this code might be useful to others, so I'm just putting it here. It's written in C++.
+
+It should probably work with other chips than the PN532.
 
 # Compile
 
