@@ -33,6 +33,10 @@ void NfcManager::close(){
     nfc_exit(mNfcContext);
 }
 
+void NfcManager::waitForTarget(){
+    while(!isTargetPresent());
+}
+
 bool NfcManager::isTargetPresent(){
     nfc_target nfcTarget;
     return (nfc_initiator_select_passive_target(mNfcDevice, mNfcModulation, NULL, 0, &nfcTarget)>0);

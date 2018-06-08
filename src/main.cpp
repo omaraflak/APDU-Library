@@ -9,7 +9,7 @@ int main() {
         std::cout << "Nfc device opened. Waiting for target..." << std::endl;
 
         // wait for target to tap
-        while(!manager.isTargetPresent());
+        manager.waitForTarget();
 
         // SELECT command
         if(manager.selectApplication("F222222222", apdu)){

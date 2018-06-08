@@ -19,6 +19,7 @@ class NfcManager {
 
         bool open();
         void close();
+        void waitForTarget();
         bool isTargetPresent();
         bool transceive(APDU& apdu);
         bool selectApplication(const std::string& appId, APDU& apdu);
