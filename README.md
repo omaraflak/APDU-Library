@@ -28,7 +28,7 @@ make
 sudo make install
 ```
 
-# Description
+# Notice
 
 The code contains an implementation of the APDU protocol according to [Wikipedia](https://fr.wikipedia.org/wiki/Application_Protocol_Data_Unit).
 However, I'm not entierly sure if I implemented correctly the **extended apdu** protocol. The `PN532` doesn't support it anyway...
@@ -47,7 +47,7 @@ if(manager.open()){
 }
 ```
 
-Once the device opened, use the `APDU` class to send and receive APDUs data.
+Once the device opened, use the `APDU` class to send and receive APDUs commands.
 If you want to perform a **select** command, you would do :
 
 ```c++
@@ -59,17 +59,19 @@ apdu.setCmd(hexStringToByteArray(appId));
 manager.transceive(apdu);
 ```
 
-After `manager.transceive()`, the `APDU` object will contain the response, if any. You can get it like this :
+To know more about APDUs instruction codes etc, read the beautiful [ISO standard](http://cardwerk.com/smart-card-standard-iso7816-4-section-5-basic-organizations)
+
+When `manager.transceive()` ends, the `APDU` object will contain the response, if any. You can get it like this :
 
 ```c++
-std::vector<uint8_t> responseByte = apdu.getRespBytes();
+std::vector<uint8_t> responseBytes = apdu.getRespBytes();
 std::string responseString = apdu.getRespString();
 ```
 
-That said, `NfcManager` already implement the `select` command, you just need to do this :
+That said, `NfcManager` already implements the `select` command, you just need to do this :
 
 ```c++
 manager.selectApplication(appId, apdu);
 ```
 
-You can find an example code here : **[main.cpp](https://github.com/OmarAflak/PN532-Android-HCE/blob/master/src/main.cpp)**
+You can find a full example here : **[main.cpp](https://github.com/OmarAflak/PN532-Android-HCE/blob/master/src/main.cpp)**
