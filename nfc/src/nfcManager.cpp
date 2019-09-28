@@ -43,7 +43,7 @@ bool NfcManager::isTargetPresent(){
 }
 
 bool NfcManager::transceive(APDU& apdu){
-    std::vector<uint8_t> cmdApdu = apdu.buildCmd();
+    std::vector<uint8_t> cmdApdu = apdu.getAPDU();
     uint8_t *capdu = &cmdApdu[0];
     size_t capdulen = cmdApdu.size();
     uint8_t rapdu[apdu.getRespMaxLength()];
@@ -70,5 +70,6 @@ bool NfcManager::selectApplication(const std::string& appId, APDU& apdu){
     apdu.setInstruction(0xA4);
     apdu.setParams(0x04, 0x00);
     apdu.setCmd(hexStringToByteArray(appId));
+    apdu.buildCmd();
     return transceive(apdu);
 }

@@ -46,6 +46,10 @@ void APDU::setCmd(const std::vector<uint8_t>& data){
     updateCmdLength();
 }
 
+void APDU::setAPDU(const std::vector<uint8_t>& apdu){
+    mAPDU = std::vector<uint8_t>(apdu.begin(), apdu.end());;
+}
+
 void APDU::updateCmdLength(){
     size_t length = mCmd.size();
     std::vector<uint8_t> lBytes = intToBytes(length);
@@ -106,7 +110,7 @@ size_t APDU::getExpectedRespLength() const{
     return mExpectedRespLength;
 }
 
-std::vector<uint8_t> APDU::buildCmd() const{
+std::vector<uint8_t> APDU::buildCmd(){
     std::vector<uint8_t> apdu;
     apdu.push_back(mCla);
     apdu.push_back(mIns);
@@ -114,7 +118,12 @@ std::vector<uint8_t> APDU::buildCmd() const{
     apdu.insert(apdu.end(), mLc.begin(), mLc.end());
     apdu.insert(apdu.end(), mCmd.begin(), mCmd.end());
     apdu.insert(apdu.end(), mLe.begin(), mLe.end());
-    return apdu;
+    mAPDU = apdu;
+    return mAPDU;
+}
+
+std::vector<uint8_t> APDU::getAPDU() const{
+    return mAPDU;
 }
 
 void APDU::setSW1(const uint8_t& SW1){
