@@ -110,7 +110,7 @@ size_t APDU::getExpectedRespLength() const{
     return mExpectedRespLength;
 }
 
-std::vector<uint8_t> APDU::buildCmd(){
+std::vector<uint8_t> APDU::buildAPDU(){
     std::vector<uint8_t> apdu;
     apdu.push_back(mCla);
     apdu.push_back(mIns);

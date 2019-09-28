@@ -70,6 +70,6 @@ bool NfcManager::selectApplication(const std::string& appId, APDU& apdu){
     apdu.setInstruction(0xA4);
     apdu.setParams(0x04, 0x00);
     apdu.setCmd(hexStringToByteArray(appId));
-    apdu.buildCmd();
+    apdu.buildAPDU();
     return transceive(apdu);
 }

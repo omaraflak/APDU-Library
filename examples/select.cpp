@@ -22,6 +22,7 @@ int main() {
             apdu.setInstruction(0x00);
             apdu.setParams(0x00, 0x00);
             apdu.setCmd("Hello World !");
+            apdu.buildAPDU();
             if(!manager.transceive(apdu)){
                 std::cout << "Could not send message" << std::endl;
             }

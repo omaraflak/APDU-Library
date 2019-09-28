@@ -56,6 +56,7 @@ apdu.setClass(0x00);
 apdu.setInstruction(0xA4);
 apdu.setParams(0x04, 0x00);
 apdu.setCmd(hexStringToByteArray(appId));
+apdu.buildAPDU();
 manager.transceive(apdu);
 ```
 

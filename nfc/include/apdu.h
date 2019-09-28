@@ -54,7 +54,7 @@ class APDU {
         void setAPDU(const std::vector<uint8_t>& apdu);
         void updateCmdLength();
 
-        std::vector<uint8_t> buildCmd();
+        std::vector<uint8_t> buildAPDU();
 
         // response
         uint8_t getSW1() const;
