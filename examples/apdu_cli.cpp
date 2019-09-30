@@ -23,7 +23,6 @@ int main() {
         std::cout << "Type 'exit' to quit the program." << std::endl;
         std::cout << "Type 'string' to convert last response to string." << std::endl << std::endl;
 
-        APDU apdu;
         std::string input;
         while(input != "exit"){
             std::cout << ">> ";
